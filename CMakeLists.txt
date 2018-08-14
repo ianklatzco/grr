@@ -80,9 +80,12 @@ set(CMAKE_C_FLAGS "-std=c11 ${GRANARY_COMMON_FLAGS} ${GRANARY_ARCH_FLAGS}")
 set(CMAKE_CXX_FLAGS "-std=c++11")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GRANARY_COMMON_FLAGS} ${GRANARY_ARCH_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions -fno-asynchronous-unwind-tables -fno-rtti")
+# I don't believe the following line is necessary for linux, as that directory is empty in the repo.
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isystem ${GRANARY_LIB_DIR}/gflags/include")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Weverything")
 set(CMAKE_ASM_FLAGS "${GRANARY_COMMON_FLAGS} ${GRANARY_ARCH_FLAGS}")
+
+find_package(gflags REQUIRED)
 
 # # C, C++, and assembly files in Granary.
 set(GRANARY_SRC_FILES
